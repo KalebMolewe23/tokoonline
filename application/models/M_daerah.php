@@ -48,6 +48,13 @@ class M_daerah extends CI_Model
         $this->db->join('jenis_barang', 'jenis_barang.id_jenis = barang.id_jenis');
         return $this->db->get('barang');
     }
+
+    //menampilkan data barang limit 4
+    function tampilan_data1()
+    {
+        $query = $this->db->query("SELECT * FROM barang JOIN jenis_barang on jenis_barang.id_jenis = barang.id_jenis ORDER BY id_barang DESC  LIMIT 4");
+        return $query->result();
+    }
     
 
     //memanggil data jenis barang

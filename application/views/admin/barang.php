@@ -121,8 +121,23 @@
                 </div>
 
                 <div class="form_group">
-                    <label>Gambar :</label>
+                    <label>Gambar Pertama :</label>
                     <input type="file" name="gambar" class="form-control">
+                </div>
+
+                <div class="form_group">
+                    <label>Gambar Kedua :</label>
+                    <input type="file" name="gambar1" class="form-control">
+                </div>
+
+                <div class="form_group">
+                    <label>Gambar Ketiga :</label>
+                    <input type="file" name="gambar2" class="form-control">
+                </div>
+
+                <div class="form_group">
+                    <label>Gambar Keempat :</label>
+                    <input type="file" name="gambar3" class="form-control">
                 </div>
 
                 <input type="hidden" name="nilai" value="0" class="form-control"><br>
