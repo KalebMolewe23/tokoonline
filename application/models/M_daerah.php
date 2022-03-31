@@ -49,10 +49,17 @@ class M_daerah extends CI_Model
         return $this->db->get('barang');
     }
 
-    //menampilkan data barang limit 4
+    //menampilkan data barang hoodie limit 4
     function tampilan_data1()
     {
-        $query = $this->db->query("SELECT * FROM barang JOIN jenis_barang on jenis_barang.id_jenis = barang.id_jenis ORDER BY id_barang DESC  LIMIT 4");
+        $query = $this->db->query("SELECT * FROM barang JOIN jenis_barang on jenis_barang.id_jenis = barang.id_jenis WHERE jenis='hoodie' ORDER BY id_barang DESC LIMIT 4");
+        return $query->result();
+    }
+
+    //menampilkan data barang crewneck limit 4
+    function tampilan_data2()
+    {
+        $query = $this->db->query("SELECT * FROM barang JOIN jenis_barang on jenis_barang.id_jenis = barang.id_jenis WHERE jenis='crewnect' ORDER BY id_barang DESC LIMIT 4");
         return $query->result();
     }
     
@@ -96,5 +103,15 @@ class M_daerah extends CI_Model
         return  $this->db->get_where($table, $where);
     }
 
-
+    //untuk mencari data barang yang akan dimasukan kedalam keranjang
+    public function find($id){
+        $result = $this->db->where('id_barang', $id)
+                            ->limit(1)
+                            ->get('barang');
+        if($result->num_rows() > 0){
+            return $result->row();
+        }else{
+            return array();
+        }
+    }
 }

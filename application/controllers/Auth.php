@@ -90,6 +90,7 @@ class Auth extends CI_Controller
             $this->load->view('auth/register', $x);
             $this->load->view('auth/template/register/footer');
         } else {
+            $email = $this->input->post('email', true);
             $datauser = [
                 'prov_id' => $this->input->post('prov_id'),
                 'city_id' => $this->input->post('city_id'),
@@ -97,7 +98,7 @@ class Auth extends CI_Controller
                 'subdis_id' => $this->input->post('subdis_id'),
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'username' => htmlspecialchars($this->input->post('username', true)),
-                'email' => htmlspecialchars($this->input->post('email', true)),
+                'email' => htmlspecialchars($email),
                 'contact' => htmlspecialchars($this->input->post('contact', true)),
                 'gender' => htmlspecialchars($this->input->post('gender', true)),
                 'address' => htmlspecialchars($this->input->post('address', true)),
@@ -105,11 +106,92 @@ class Auth extends CI_Controller
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'image' => 'default.jpeg',
                 'role_id' => 3,
-                'is_active' => 1,
+                'is_active' => 0,
                 'date_created' => time()
             ];
+
+            //nilai token
+            $token = base64_encode(random_bytes(32));
+            $user_token = [
+                'email' => $email,
+                'token' => $token,
+                'date_created' => time()
+            ];
+
             $this->db->insert('user', $datauser);
-            $this->session->set_flashdata('message', '<div class="alert-success" role="alert">SUCCEED!!! Account Registered Successfully. Please Login.</div>');
+            $this->db->insert('user_token', $user_token);
+
+            $this->_sendEmail($token, 'verify');
+
+            $this->session->set_flashdata('message', '<div class="alert-success" role="alert">SUCCEED!!! Akun Berhasil Dibuat. Silahkan Validasi Akun Anda Melalui Email Anda.</div>');
+            redirect('auth');
+        }
+    }
+
+    //memanggil API Mailtrap
+    private function _sendEmail($token, $type){
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'smtp.mailtrap.io',
+            'smtp_port' => 2525,
+            'smtp_user' => '6e030f2015fcb2',
+            'smtp_pass' => 'e7f27e614b9b15',
+            'crlf' => "\r\n",
+            'newline' => "\r\n"
+        );
+
+        $this->email->initialize($config);
+
+        $this->email->from('fepdeveloper@gmail.com', 'F.E.P Developer Team');
+        $this->email->to($this->input->post('email'));
+
+        if($type == 'verify'){
+            $this->email->subject('Verifikasi Akun Anda');
+            $this->email->message('Silahkan klik link ini untuk melakukan verifikasi terhadap akun anda : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . $token . '"><button>Active</button></a>');
+        }
+
+        if($this->email->send()){
+            return true;
+        }else{
+            echo $this->email->print_debugger();
+            die;
+        }
+    }
+
+    public function verify(){
+        $email = $this->input->get('email');
+        $token = $this->input->get('token');
+
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        if($user){
+            $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+
+            if($user_token){
+                if(time() - $user_token['date_created'] < (60*60*24)){   
+                    $this->db->set('is_active', 1);
+                    $this->db->where('email', $email);
+                    $this->db->update('user');
+
+                    $this->db->delete('user_token', ['email' => $email]);
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">'. $email .' has been activated! Silahkan Login</div>');
+                    redirect('auth');
+                }else{
+                    $this->db->delete('user', ['email' => $email]);
+                    $this->db->delete('user_token', ['email' => $email]);
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Aktivasi Akun Anda Gagal! Token Expired</div>');
+                    redirect('auth'); 
+                }
+
+            }else{
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Aktivasi Akun Anda Gagal! Token Salah</div>');
+                redirect('auth');
+            }
+
+        }else{
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Aktivasi Akun Anda Gagal! Email Salah</div>');
             redirect('auth');
         }
     }

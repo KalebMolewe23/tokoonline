@@ -135,40 +135,40 @@ class Admin extends CI_Controller
                 $gambar = $this->upload->data('file_name');
             }
         }
-        $gambar1 = $_FILES['gambar']['name'];
+        $gambar1 = $_FILES['gambar1']['name'];
         if ($gambar1 = '') {
         } else {
             $config['upload_path'] = './assets/barang';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
 
             $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('gambar')) {
+            if (!$this->upload->do_upload('gambar1')) {
                 echo "Gambar Gagal Diupload";
             } else {
                 $gambar1 = $this->upload->data('file_name');
             }
         }
-        $gambar2 = $_FILES['gambar']['name'];
+        $gambar2 = $_FILES['gambar2']['name'];
         if ($gambar2 = '') {
         } else {
             $config['upload_path'] = './assets/barang';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
 
             $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('gambar')) {
+            if (!$this->upload->do_upload('gambar2')) {
                 echo "Gambar Gagal Diupload";
             } else {
                 $gambar2 = $this->upload->data('file_name');
             }
         }
-        $gambar3 = $_FILES['gambar']['name'];
+        $gambar3 = $_FILES['gambar3']['name'];
         if ($gambar3 = '') {
         } else {
             $config['upload_path'] = './assets/barang';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
 
             $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('gambar')) {
+            if (!$this->upload->do_upload('gambar3')) {
                 echo "Gambar Gagal Diupload";
             } else {
                 $gambar3 = $this->upload->data('file_name');

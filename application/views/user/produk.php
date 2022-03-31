@@ -6,7 +6,9 @@
             <li><a href="<?= base_url("user"); ?>">Home</a></li>
             <li><a class="active" href="<?= base_url("user/produk"); ?>">Produk</a></li>
             <li><a href="">Chat</a></li>
-            <li id="lg-bag"><a href=""><i class="fas fa-shopping-cart"></i></a></li>
+            <li id="lg-bag"><?php $keranjang = '<i class="fas fa-shopping-cart"></i>' . $this->cart->total_items() . '' ?>
+                <?= anchor('user/detail_keranjang', $keranjang) ?>
+            </li>
             <li><a href="">About</a></li>
             <li><a href="">Profil</a></li>
             <a href="#" id="close"><i class="fas fa-times"></i></a>
@@ -40,7 +42,7 @@
                     </div>
                     <h4>Rp. <?php echo number_format($brg->harga, 0, ',', '.') ?></h4>
                 </div>
-                <?= anchor('user/detail_produk/' . $brg->id_barang , '<i class="fas fa-shopping-cart"></i>'); ?>
+                <?= anchor('user/detail_produk/' . $brg->id_barang, '<i class="fas fa-shopping-cart"></i>'); ?>
             </div>
         <?php endforeach; ?>
     </div>
