@@ -49,6 +49,18 @@ class M_daerah extends CI_Model
         return $this->db->get('barang');
     }
 
+    //limit data tampilan produk
+    function tampilan_data_produk($limit, $start){
+        $this->db->join('jenis_barang', 'jenis_barang.id_jenis = barang.id_jenis');
+        return $this->db->get('barang', $limit, $start)->result();
+    }
+
+    //menampilkan jumlah produk
+    public function countProduct(){
+        $this->db->join('jenis_barang', 'jenis_barang.id_jenis = barang.id_jenis');
+        return $this->db->get('barang')->num_rows();
+    }
+
     //menampilkan data barang hoodie limit 4
     function tampilan_data1()
     {

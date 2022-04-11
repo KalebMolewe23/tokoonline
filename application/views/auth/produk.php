@@ -3,6 +3,22 @@
 
     <div>
         <ul id="navbar">
+            <li>
+                <div class="boxContainer">
+                    <table class="elementsContainer">
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="Search" class="search">
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
             <li><a href="<?= base_url("home"); ?>">Home</a></li>
             <li><a class="active" href="<?= base_url("home/produk"); ?>">Produk</a></li>
             <li id="lg-bag"><a href="<?= base_url("auth"); ?>"><i class="fas fa-shopping-cart"></i></a></li>
@@ -45,10 +61,8 @@
     </div>
 </section>
 
-<section id="pagination" class="section-p1">
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
+<section class="section-p1">
+    <?= $this->pagination->create_links(); ?>
 </section>
 
 <section id="newsletter" class="section-p1">

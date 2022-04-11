@@ -3,6 +3,22 @@
 
     <div>
         <ul id="navbar">
+            <li>
+                <div class="boxContainer">
+                    <table class="elementsContainer">
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="Search" class="search">
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
             <li><a class="active" href="<?= base_url("home"); ?>">Home</a></li>
             <li><a href="<?= base_url("home/produk"); ?>">Produk</a></li>
             <li id="lg-bag"><a href="<?= base_url("auth"); ?>"><i class="fas fa-shopping-cart"></i></a></li>
@@ -55,7 +71,18 @@
 
 <section id="product1" class="section-p1">
     <h2>Product Hoodie</h2>
-    <p>Silahkan Pilih Produk Hoodie Kami</p>
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <p>Silahkan Pilih Produk Hoodie Kami</p>
+        </div>
+        <div class="col-sm-2">
+            <a href="<?= base_url('home/produk'); ?>">
+                <p>Produk Lainnya<i class="far fa-arrow-alt-circle-right"></i></p>
+            </a>
+        </div>
+    </div>
     <div class="pro-container">
         <?php foreach ($barang as $brg) : ?>
             <div class="pro">
@@ -86,7 +113,18 @@
 
 <section id="product1" class="section-p1">
     <h2>Product Crewneck</h2>
-    <p>Silahkan Pilih Produk Crewneck Kami</p>
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <p>Silahkan Pilih Produk Crewneck Kami</p>
+        </div>
+        <div class="col-sm-2">
+            <a href="<?= base_url('home/produk'); ?>">
+                <p>Produk Lainnya<i class="far fa-arrow-alt-circle-right"></i></p>
+            </a>
+        </div>
+    </div>
     <div class="pro-container">
         <?php foreach ($barang2 as $brg2) : ?>
             <div class="pro">

@@ -6,7 +6,7 @@
             <li><a href="<?= base_url("user"); ?>">Home</a></li>
             <li><a class="active" href="<?= base_url("user/produk"); ?>">Produk</a></li>
             <li><a href="">Chat</a></li>
-            <li id="lg-bag"><?php $keranjang = '<i class="fas fa-shopping-cart"></i>'.$this->cart->total_items(). '' ?>
+            <li id="lg-bag"><?php $keranjang = '<i class="fas fa-shopping-cart"></i>' . $this->cart->total_items() . '' ?>
                 <?= anchor('user/detail_keranjang', $keranjang) ?>
             </li>
             <li><a href="">About</a></li>
@@ -45,7 +45,7 @@
             <h4><?= $brg->nama_barang; ?></h4>
             <h2>Rp. <?php echo number_format($brg->harga, 0, ',', '.') ?></h2>
             <input type="number" value="1">
-            <?= anchor('user/tambah_keranjang/'.$brg->id_barang, '<button class="normal">Add To Cart</button>')?>
+            <?= anchor('user/tambah_keranjang/' . $brg->id_barang, '<button class="normal">Add To Cart</button>') ?>
             <h4>Product Details</h4>
             <span><?= $brg->keterangan; ?></span>
         </div>
@@ -112,16 +112,16 @@
     var MainImg = document.getElementById("MainImg");
     var smalling = document.getElementsByClassName("small-img");
 
-    smalling[0].onClick = function() {
+    smalling[0].onclick = function() {
         MainImg.src = smalling[0].src;
     }
-    smalling[1].onClick = function() {
+    smalling[1].onclick = function() {
         MainImg.src = smalling[1].src;
     }
-    smalling[2].onClick = function() {
+    smalling[2].onclick = function() {
         MainImg.src = smalling[2].src;
     }
-    smalling[3].onClick = function() {
+    smalling[3].onclick = function() {
         MainImg.src = smalling[3].src;
     }
 </script>

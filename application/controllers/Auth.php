@@ -131,13 +131,15 @@ class Auth extends CI_Controller
     //memanggil API Mailtrap
     private function _sendEmail($token, $type){
         $config = array(
-            'protocol' => 'smtp',
+            'protocol'  => 'smtp',
             'smtp_host' => 'smtp.mailtrap.io',
             'smtp_port' => 2525,
             'smtp_user' => '6e030f2015fcb2',
             'smtp_pass' => 'e7f27e614b9b15',
-            'crlf' => "\r\n",
-            'newline' => "\r\n"
+            'mailtype'  => 'html',
+            'charset'   => 'utf-8',
+            'crlf'      => "\r\n",
+            'newline'   => "\r\n"
         );
 
         $this->email->initialize($config);
