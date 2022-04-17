@@ -620,6 +620,113 @@ footer .copyright{
     cursor: pointer;
 }
 
+#category{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#category .card {
+    width: 100%;
+    height: auto;
+    grid-column: span 8;
+    margin: 10px 0;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
+
+}
+
+#category .head-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+#category .head-card h3 {
+    text-align: center;
+}
+
+#category .body-card {
+    padding: 10px 15px;
+}
+
+#category .body-card h1 {
+    margin: 0;
+}
+
+/* responsive img */
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+/* slide img */
+@keyframes slidy {
+    0% {
+        left: 0%;
+    }
+
+    20% {
+        left: 0%;
+    }
+
+    25% {
+        left: -100%;
+    }
+
+    45% {
+        left: -100%;
+    }
+
+    50% {
+        left: -200%;
+    }
+
+    70% {
+        left: -200%;
+    }
+
+    75% {
+        left: -300%;
+    }
+
+    95% {
+        left: -300%;
+    }
+
+    100% {
+        left: -400%;
+    }
+}
+
+#slider {
+    overflow: hidden;
+}
+
+#slider figure img {
+    width: 20%;
+    float: left;
+}
+
+#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    animation: 30s slidy infinite;
+}
+
+
+#category .body-card svg {
+    width: 31px;
+    position: absolute;
+    bottom: 7px;
+    right: 20px;
+}
+
 #prodetails .single-pro-details{
     width: 50%;
     padding-top: 30px;
@@ -778,6 +885,10 @@ footer .copyright{
     .section-p1{
         padding: 40px 40px;
     }
+    .card {
+        width: 350px;
+        margin: 0 10px;
+    }
     #navbar{
         display: flex;
         flex-direction: column;
@@ -894,6 +1005,9 @@ footer .copyright{
 @media (max-width: 477px){
     .section-p1{
         padding: 20px;
+    }
+    .card {
+        grid-column: span 4;
     }
     #header{
         padding: 10px 30px;

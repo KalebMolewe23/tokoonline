@@ -38,6 +38,38 @@
     <p>Save More With Coupons & Up To 70% off! </p>
 </section>
 
+<section id="category" class="section-p1">
+    <div class="card">
+        <div class="head-card">
+        </div>
+        <div class="body-card">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class=list-group>
+                            <a class="list-group-item">
+                                <h3><strong>Category</strong></h3>
+                            </a>
+                            <a href="<?= base_url('home/produk'); ?>" class="list-group-item">Semua</a>
+                            <a href="<?= base_url('home/hoodie'); ?>" class="list-group-item">Hoodie</a>
+                            <a href="<?= base_url('home/crewneck'); ?>" class="list-group-item">Crewneck</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="slider">
+                            <figure>
+                                <img src="<?= base_url('assets/image/testing.jpg') ?>" class="responsive" alt></img>
+                                <img src="<?= base_url('assets/image/testing.jpg') ?>" class="responsive" alt></img>
+                                <img src="<?= base_url('assets/image/testing.jpg') ?>" class="responsive" alt></img>
+                                <img src="<?= base_url('assets/image/testing.jpg') ?>" class="responsive" alt></img>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
 <section id="product1" class="section-p1">
     <div class="pro-container">
         <?php foreach ($barang as $brg) : ?>

@@ -55,6 +55,16 @@ class M_daerah extends CI_Model
         return $this->db->get('barang', $limit, $start)->result();
     }
 
+    function tampilan_data_hoodie(){
+        $this->db->where('jenis=Hoodie');
+        return $this->db->get('jenis_barang')->result();
+    }
+
+    function tampilan_data_crewneck(){
+        $this->db->where('jenis=Crewnect');
+        return $this->db->get('jenis_barang')->result();
+    }
+
     //menampilkan jumlah produk
     public function countProduct(){
         $this->db->join('jenis_barang', 'jenis_barang.id_jenis = barang.id_jenis');

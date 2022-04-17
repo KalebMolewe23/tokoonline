@@ -23,7 +23,7 @@
 <section id="page-header">
     <h2> #StayAtHome </h2>
     <p>Save More With Coupons & Up To 70% off! </p>
-</section>
+</section>   
 
 <section id="product1" class="section-p1">
     <div class="pro-container">
