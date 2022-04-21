@@ -8,10 +8,14 @@
                     <table class="elementsContainer">
                         <tr>
                             <td>
-                                <input type="text" placeholder="Search" class="search">
+                                <form action="<?= base_url('home/search/') ?>" method="get">
+                                    <div class="input-group">
+                                        <input type="text" class="search" name="keyword" placeholder="Search...">
+                                    </div>
+                                </form>
                             </td>
                             <td>
-                                <a href="#">
+                                <a href="<?= base_url('home/search'); ?>">
                                     <i class="fas fa-search"></i>
                                 </a>
                             </td>

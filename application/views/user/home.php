@@ -3,6 +3,26 @@
 
     <div>
         <ul id="navbar">
+            <li>
+                <div class="boxContainer">
+                    <table class="elementsContainer">
+                        <tr>
+                            <td>
+                                <form action="<?= base_url('user/search/') ?>" method="get">
+                                    <div class="input-group">
+                                        <input type="text" class="search" name="keyword" placeholder="Search...">
+                                    </div>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="<?= base_url('user/search'); ?>">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
             <li><a class="active" href="<?= base_url("user"); ?>">Home</a></li>
             <li><a href="<?= base_url("user/produk"); ?>">Produk</a></li>
             <li><a href="">Chat</a></li>
@@ -58,7 +78,18 @@
 
 <section id="product1" class="section-p1">
     <h2>Product Hoodie</h2>
-    <p>Silahkan Pilih Produk Hoodie Kami</p>
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <p>Silahkan Pilih Produk Hoodie Kami</p>
+        </div>
+        <div class="col-sm-2">
+            <a href="<?= base_url('user/produk'); ?>">
+                <p>Produk Lainnya<i class="far fa-arrow-alt-circle-right"></i></p>
+            </a>
+        </div>
+    </div>
     <div class="pro-container">
         <?php foreach ($barang as $brg) : ?>
             <div class="pro">
@@ -89,14 +120,25 @@
 
 <section id="product1" class="section-p1">
     <h2>Product Crewneck</h2>
-    <p>Silahkan Pilih Produk Crewneck Kami</p>
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <p>Silahkan Pilih Produk Crewneck Kami</p>
+        </div>
+        <div class="col-sm-2">
+            <a href="<?= base_url('user/produk'); ?>">
+                <p>Produk Lainnya<i class="far fa-arrow-alt-circle-right"></i></p>
+            </a>
+        </div>
+    </div>
     <div class="pro-container">
-        <?php foreach ($barang as $brg) : ?>
+        <?php foreach ($barang2 as $brg2) : ?>
             <div class="pro">
-                <img src="<?= base_url() . '/assets/barang/' . $brg->gambar ?>" class="card-img-top" alt="...">
+                <img src="<?= base_url() . '/assets/barang/' . $brg2->gambar ?>" class="card-img-top" alt="...">
                 <div class="des">
-                    <span><?= $brg->nama_barang ?></span>
-                    <h5><?= $brg->jenis ?></h5>
+                    <span><?= $brg2->nama_barang ?></span>
+                    <h5><?= $brg2->jenis ?></h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -104,9 +146,9 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <h4>Rp. <?php echo number_format($brg->harga, 0, ',', '.') ?></h4>
+                    <h4>Rp. <?php echo number_format($brg2->harga, 0, ',', '.') ?></h4>
                 </div>
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                <?= anchor('user/detail_produk/' . $brg2->id_barang, '<i class="fas fa-shopping-cart"></i>'); ?>
             </div>
         <?php endforeach; ?>
     </div>

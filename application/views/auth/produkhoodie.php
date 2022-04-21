@@ -8,14 +8,14 @@
                     <table class="elementsContainer">
                         <tr>
                             <td>
-                                <form action="<?= base_url('home/search/') ?>" method="get">
+                                <form action="<?= base_url('user/search/') ?>" method="get">
                                     <div class="input-group">
                                         <input type="text" class="search" name="keyword" placeholder="Search...">
                                     </div>
                                 </form>
                             </td>
                             <td>
-                                <a href="<?= base_url('home/search'); ?>">
+                                <a href="<?= base_url('user/search'); ?>">
                                     <i class="fas fa-search"></i>
                                 </a>
                             </td>
@@ -91,7 +91,7 @@
                     </div>
                     <h4>Rp. <?php echo number_format($brg->harga, 0, ',', '.') ?></h4>
                 </div>
-                <?= anchor('home/detail_produk/' . $brg->id_barang, '<i class="fas fa-shopping-cart"></i>'); ?>
+                <?= anchor('user/detail_produk/' . $brg->id_barang, '<i class="fas fa-shopping-cart"></i>'); ?>
             </div>
         <?php endforeach; ?>
     </div>

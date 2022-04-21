@@ -14,6 +14,9 @@
                                     </div>
                                 </form>
                             </td>
+                            <!-- <td>    
+                                <input type="text" placeholder="Search" class="search">
+                            </td> -->
                             <td>
                                 <a href="<?= base_url('home/search'); ?>">
                                     <i class="fas fa-search"></i>
@@ -76,12 +79,12 @@
 
 <section id="product1" class="section-p1">
     <div class="pro-container">
-        <?php foreach ($barang as $brg) : ?>
+        <?php foreach ($data as $brg) : ?>
             <div class="pro">
-                <img src="<?= base_url() . '/assets/barang/' . $brg->gambar ?>" class="card-img-top" alt="...">
+                <img src="<?= base_url() . '/assets/barang/' . $brg['gambar'] ?>" class="card-img-top" alt="...">
                 <div class="des">
-                    <span><?= $brg->nama_barang ?></span>
-                    <h5><?= $brg->jenis ?></h5>
+                    <span><?= $brg['nama_barang'] ?></span>
+                    <h5><?= $brg['jenis'] ?></h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -89,9 +92,9 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <h4>Rp. <?php echo number_format($brg->harga, 0, ',', '.') ?></h4>
+                    <h4>Rp. <?php echo number_format($brg['harga'], 0, ',', '.') ?></h4>
                 </div>
-                <?= anchor('home/detail_produk/' . $brg->id_barang, '<i class="fas fa-shopping-cart"></i>'); ?>
+                <?= anchor('user/detail_produk/' . $brg['id_barang'], '<i class="fas fa-shopping-cart"></i>'); ?>
             </div>
         <?php endforeach; ?>
     </div>

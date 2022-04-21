@@ -91,7 +91,7 @@
                     </div>
                     <h4>Rp. <?php echo number_format($brg->harga, 0, ',', '.') ?></h4>
                 </div>
-                <?= anchor('home/detail_produk/' . $brg->id_barang, '<i class="fas fa-shopping-cart"></i>'); ?>
+                <?= anchor('user/detail_produk/' . $brg->id_barang, '<i class="fas fa-shopping-cart"></i>'); ?>
             </div>
         <?php endforeach; ?>
     </div>

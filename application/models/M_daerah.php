@@ -55,19 +55,29 @@ class M_daerah extends CI_Model
         return $this->db->get('barang', $limit, $start)->result();
     }
 
-    function tampilan_data_hoodie(){
-        $this->db->where('jenis=Hoodie');
-        return $this->db->get('jenis_barang')->result();
+    function tampilan_data_hoodie($limit, $start){
+        $this->db->join('jenis_barang','jenis_barang.id_jenis = barang.id_jenis');
+        $this->db->where('jenis="Hoodie"');
+        return $this->db->get('barang', $limit, $start)->result();
     }
 
-    function tampilan_data_crewneck(){
-        $this->db->where('jenis=Crewnect');
-        return $this->db->get('jenis_barang')->result();
+    function tampilan_data_crewneck($limit, $start){
+        $this->db->join('jenis_barang', 'jenis_barang.id_jenis = barang.id_jenis');
+        $this->db->where('jenis="Crewnect"');
+        return $this->db->get('barang', $limit, $start)->result();
     }
 
     //menampilkan jumlah produk
     public function countProduct(){
         $this->db->join('jenis_barang', 'jenis_barang.id_jenis = barang.id_jenis');
+        return $this->db->get('barang')->num_rows();
+    }
+
+    //menampilkan jumlah hoodie
+    public function countHoodie()
+    {
+        $this->db->join('jenis_barang', 'jenis_barang.id_jenis = barang.id_jenis');
+        $this->db->where('jenis="Hoodie"');
         return $this->db->get('barang')->num_rows();
     }
 
@@ -135,5 +145,16 @@ class M_daerah extends CI_Model
         }else{
             return array();
         }
+    }
+
+    public function search($keyword=null)
+    {
+        $this->db->select('*');
+        $this->db->join('jenis_barang','jenis_barang.id_jenis = barang.id_jenis');
+        $this->db->from('barang');
+        if(!empty($keyword)){
+            $this->db->like('nama_barang', $keyword);
+        }
+        return $this->db->get()->result_array();
     }
 }

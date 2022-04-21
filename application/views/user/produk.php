@@ -3,6 +3,26 @@
 
     <div>
         <ul id="navbar">
+            <li>
+                <div class="boxContainer">
+                    <table class="elementsContainer">
+                        <tr>
+                            <td>
+                                <form action="<?= base_url('user/search/') ?>" method="get">
+                                    <div class="input-group">
+                                        <input type="text" class="search" name="keyword" placeholder="Search...">
+                                    </div>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="<?= base_url('user/search'); ?>">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
             <li><a href="<?= base_url("user"); ?>">Home</a></li>
             <li><a class="active" href="<?= base_url("user/produk"); ?>">Produk</a></li>
             <li><a href="">Chat</a></li>
@@ -23,7 +43,39 @@
 <section id="page-header">
     <h2> #StayAtHome </h2>
     <p>Save More With Coupons & Up To 70% off! </p>
-</section>   
+</section>
+
+<section id="category" class="section-p1">
+    <div class="card">
+        <div class="head-card">
+        </div>
+        <div class="body-card">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class=list-group>
+                            <a class="list-group-item">
+                                <h3><strong>Category</strong></h3>
+                            </a>
+                            <a href="<?= base_url('user/produk'); ?>" class="list-group-item">Semua</a>
+                            <a href="<?= base_url('user/hoodie'); ?>" class="list-group-item">Hoodie</a>
+                            <a href="<?= base_url('user/crewneck'); ?>" class="list-group-item">Crewneck</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="slider">
+                            <figure>
+                                <img src="<?= base_url('assets/image/testing.jpg') ?>" class="responsive" alt></img>
+                                <img src="<?= base_url('assets/image/testing.jpg') ?>" class="responsive" alt></img>
+                                <img src="<?= base_url('assets/image/testing.jpg') ?>" class="responsive" alt></img>
+                                <img src="<?= base_url('assets/image/testing.jpg') ?>" class="responsive" alt></img>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
 
 <section id="product1" class="section-p1">
     <div class="pro-container">
@@ -48,10 +100,8 @@
     </div>
 </section>
 
-<section id="pagination" class="section-p1">
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
+<section class="section-p1">
+    <?= $this->pagination->create_links(); ?>
 </section>
 
 <section id="newsletter" class="section-p1">

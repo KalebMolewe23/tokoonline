@@ -3,6 +3,26 @@
 
     <div>
         <ul id="navbar">
+            <li>
+                <div class="boxContainer">
+                    <table class="elementsContainer">
+                        <tr>
+                            <td>
+                                <form action="<?= base_url('user/search/') ?>" method="get">
+                                    <div class="input-group">
+                                        <input type="text" class="search" name="keyword" placeholder="Search...">
+                                    </div>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="<?= base_url('user/search'); ?>">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
             <li><a href="<?= base_url("user"); ?>">Home</a></li>
             <li><a href="<?= base_url("user/produk"); ?>">Produk</a></li>
             <li><a href="">Chat</a></li>
@@ -50,10 +70,10 @@
 <section id="cart-add" class="section-p1">
     <div id="coupon">
         <h3>Anda Memiliki Kupon?</h3>
-            <div>
-                <input type="text" placeholder="Masukkan Kupon Anda Disini">
-                <button class="normal">Proses</button>
-            </div>
+        <div>
+            <input type="text" placeholder="Masukkan Kupon Anda Disini">
+            <button class="normal">Proses</button>
+        </div>
     </div>
 
     <div id="subtotal">
@@ -65,7 +85,7 @@
             </tr>
             <tr>
                 <td><strong>Total</strong></td>
-                <td><strong>Rp. <?= number_format($this->cart->total(), 0,',','.') ?></strong></td>
+                <td><strong>Rp. <?= number_format($this->cart->total(), 0, ',', '.') ?></strong></td>
             </tr>
         </table>
         <a href="<?= base_url("user/checkout"); ?>"><button class="normal">Proses Checkout</button></a>
